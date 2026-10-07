@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ALICIA REGALA SUS SERVICIOS</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+
+            background: repeating-linear-gradient(
+                45deg,
+                #ff4f81 0px,
+                #ff4f81 80px,
+                #d9003b 80px,
+                #d9003b 160px
+            );
+        }
+
+        .contenedor {
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: clamp(45px, 9vw, 100px);
+            line-height: 0.9;
+            margin: 20px 0;
+            font-weight: 900;
+            text-shadow: 6px 6px #850029;
+        }
+
+        .subtitulo {
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        .tarjeta {
+            background: white;
+            color: #c4003b;
+            padding: 30px;
+            margin: 25px auto;
+            border-radius: 25px;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        }
+
+        .tarjeta h2 {
+            font-size: 32px;
+            margin-top: 0;
+        }
+
+        .precios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .precio {
+            background: #ffe1ea;
+            padding: 20px;
+            border-radius: 15px;
+            border: 3px solid #ff4f81;
+        }
+
+        .precio h3 {
+            margin: 5px;
+        }
+
+        .precio strong {
+            font-size: 25px;
+        }
+
+        .horarios {
+            font-size: 20px;
+            line-height: 1.8;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 3px solid #ff4f81;
+            border-radius: 12px;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: #d9003b;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            background: #a8002e;
+            transform: scale(1.02);
+        }
+
+        #mensaje {
+            display: none;
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .whatsapp {
+            background: #25D366;
+        }
+
+        .whatsapp:hover {
+            background: #159447;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <h1>
+        ALICIA<br>
+        REGALA SUS<br>
+        SERVICIOS
+    </h1>
+
+    <div class="subtitulo">
+        🔥 ¡RESERVÁ TU TURNO ANTES DE QUE SE AGOTEN! 🔥
+    </div>
+
+    <!-- PRECIOS -->
+
+    <div class="tarjeta">
+        <h2>💰 LISTA DE PRECIOS</h2>
+
+        <div class="precios">
+
+            <div class="precio">
+                <h3>Turno básico</h3>
+                <strong>$500</strong>
+            </div>
+
+            <div class="precio">
+                <h3>Turno premium</h3>
+                <strong>$1.500</strong>
+            </div>
+
+            <div class="precio">
+                <h3>Turno VIP</h3>
+                <strong>$3.000</strong>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- HORARIOS -->
+
+    <div class="tarjeta">
+        <h2>🕐 HORARIOS DISPONIBLES</h2>
+
+        <div class="horarios">
+            Lunes — 18:00 a 22:00<br>
+            Miércoles — 17:00 a 23:00<br>
+            Viernes — 19:00 a 00:00<br>
+            Sábado — ⚠️ MUY SOLICITADO
+        </div>
+    </div>
+
+    <!-- RESERVA -->
+
+    <div class="tarjeta">
+
+        <h2>📅 AGENDATE AQUÍ</h2>
+
+        <input
+            type="text"
+            id="nombre"
+            placeholder="Escribí tu nombre..."
+        >
+
+        <button onclick="agendar()">
+            🔥 RESERVAR MI TURNO
+        </button>
+
+        <div id="mensaje"></div>
+
+    </div>
+
+    <!-- WHATSAPP FALSO -->
+
+    <div class="tarjeta">
+
+        <h2>📱 ¿TENÉS DUDAS?</h2>
+
+        <button class="whatsapp" onclick="whatsapp()">
+            💬 CONTACTAR POR WHATSAPP
+        </button>
+
+        <div id="mensajeWhatsapp"></div>
+
+    </div>
+
+    <div class="disclaimer">
+        ⚠️ Sitio creado exclusivamente con fines humorísticos.
+    </div>
+
+</div>
+
+
+<script>
+
+function agendar() {
+
+    const nombre = document.getElementById("nombre").value;
+    const mensaje = document.getElementById("mensaje");
+
+    mensaje.style.display = "block";
+
+    if (nombre.trim() === "") {
+
+        mensaje.style.color = "#d9003b";
+        mensaje.textContent = "⚠️ Primero escribí tu nombre 😂";
+
+        return;
+    }
+
+    mensaje.style.color = "#009944";
+
+    mensaje.textContent =
+        "✅ ¡Turno reservado para " +
+        nombre +
+        "! 😂";
+
+}
+
+
+function whatsapp() {
+
+    const mensaje =
+        document.getElementById("mensajeWhatsapp");
+
+    mensaje.style.display = "block";
+    mensaje.style.color = "#159447";
+
+    mensaje.textContent =
+        "📱 WhatsApp temporalmente ocupado 😂";
+
+}
+
+</script>
+
+</body>
+</html>
+```
